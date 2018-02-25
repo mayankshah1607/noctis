@@ -16,7 +16,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage"></activity>
+        <activity android:name=".LoginPage">
+            <intent-filter>
+                <action android:name="com.ieeevit.noctis.LoginPage" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegisterPage">
+            <intent-filter>
+                <action android:name="com.ieeevit.noctis.RegisterPage" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
