@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent lgn = new Intent("com.ieeevit.noctis.LoginPage");
                         startActivity(lgn);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     }
                 }
         );
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent reg = new Intent("com.ieeevit.noctis.RegisterPage");
                         startActivity(reg);
+                        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                     }
                 }
         );
