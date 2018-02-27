@@ -48,7 +48,7 @@
                     android:layout_marginLeft="36dp"
                     android:layout_marginRight="36dp"
                     android:hint="Registration Number"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:textColor="#000000" />
             </android.support.design.widget.TextInputLayout>
 
@@ -77,10 +77,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Text2"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
                 android:text="Sign in as an Admin"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_marginTop="23dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="267dp" />
 
 
         </RelativeLayout>
@@ -92,19 +94,19 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/button_1"
         android:layout_gravity="center"
+        android:layout_marginLeft="63dp"
+        android:layout_marginRight="63dp"
         android:background="@drawable/round_button_1"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
         android:text="LOGIN"
-        android:layout_marginLeft="63dp"
-        android:layout_marginRight="63dp"
         android:textColor="@color/colorPrimary"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
 
         app:layout_constraintVertical_bias="0.939" />
 
