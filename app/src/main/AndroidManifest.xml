@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ieeevit.noctis">
-    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -10,25 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".signIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage">
+        <activity android:name=".signUp">
             <intent-filter>
-                <action android:name="com.ieeevit.noctis.LoginPage" />
+            <action android:name="com.ieeevit.noctis.signUp" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".RegisterPage">
-            <intent-filter>
-                <action android:name="com.ieeevit.noctis.RegisterPage" />
-
-                <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
