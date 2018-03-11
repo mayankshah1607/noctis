@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "49927952808",
+    "firebase_url": "https://noctis-74711.firebaseio.com",
+    "project_id": "noctis-74711",
+    "storage_bucket": "noctis-74711.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49927952808:android:039dfda98e1e1e24",
+        "android_client_info": {
+          "package_name": "com.ieeevit.noctis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49927952808-7nq3o9aieqqtgh0idqr82s7eh0iiauni.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE7111KV6Iz5hbhqutkBgMmdLnO6iIXq4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
