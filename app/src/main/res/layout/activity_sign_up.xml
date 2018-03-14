@@ -36,6 +36,7 @@
                 android:textSize="26sp"
                 android:textStyle="bold"/>
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/emailLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="56dp"
@@ -43,6 +44,7 @@
                 android:layout_marginTop="28dp"
                 android:background="@drawable/edittext"
                 android:paddingTop="10dp"
+                app:errorTextAppearance="#ffffff"
                 android:textColorHint="#838485">
 
                 <EditText
@@ -60,6 +62,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/regnoLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="56dp"
@@ -67,6 +70,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext"
                 android:paddingTop="10dp"
+                app:errorTextAppearance="#ffffff"
                 android:textColorHint="#838485">
 
                 <EditText
@@ -84,6 +88,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/phnoLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="56dp"
@@ -91,6 +96,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext"
                 android:paddingTop="10dp"
+                app:errorTextAppearance="#ffffff"
                 android:textColorHint="#838485">
 
                 <EditText
@@ -108,6 +114,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/passLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="56dp"
@@ -115,6 +122,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext"
                 android:paddingTop="10dp"
+                app:errorTextAppearance="#ffffff"
                 android:textColorHint="#838485">
 
                 <EditText
@@ -132,6 +140,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/cnfpassLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="56dp"
@@ -150,6 +159,7 @@
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
                     android:paddingBottom="8dp"
+                    app:errorTextAppearance="#ffffff"
                     android:paddingLeft="30dp"
                     android:paddingRight="28dp"
                     android:textColor="#ffffff" />

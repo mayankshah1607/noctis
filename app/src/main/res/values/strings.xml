@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Noctis</string>
+    <string name="error">This Field is required</string>
 </resources>
