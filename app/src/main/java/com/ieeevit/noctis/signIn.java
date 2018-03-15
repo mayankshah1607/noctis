@@ -5,10 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class signIn extends AppCompatActivity {
     Button signup;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,16 +16,17 @@ public class signIn extends AppCompatActivity {
         open();
     }
     public void open(){
-        signup = (Button) findViewById(R.id.signup);
+        signup = (Button) findViewById(R.id.signupbtn);
         signup.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent SignUp = new Intent("com.ieeevit.noctis.signUp");
                         startActivity(SignUp);
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                        //overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     }
                 }
         );
     }
+
 }

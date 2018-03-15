@@ -35,135 +35,95 @@
                 android:gravity="center"
                 android:textSize="26sp"
                 android:textStyle="bold"/>
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/emailLayout"
+             <EditText
+                 android:layout_marginTop="36dp"
+                 android:id="@+id/email"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:background="@drawable/edittext"
+                 android:ems="10"
+                 android:hint="Email ID"
+                 android:inputType="textEmailAddress"
+                 android:paddingBottom="12dp"
+                 android:paddingLeft="30dp"
+                 android:paddingRight="28dp"
+                 android:paddingTop="12dp"
+                 android:textColor="#ffffff"
+                 android:textColorHint="#838485"
+                 android:layout_marginLeft="56dp"
+                 android:layout_marginRight="56dp"/>
+
+            <EditText
+                android:layout_marginTop="18dp"
+                android:id="@+id/regno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"
-                android:layout_marginTop="28dp"
                 android:background="@drawable/edittext"
-                android:paddingTop="10dp"
-                app:errorTextAppearance="#ffffff"
-                android:textColorHint="#838485">
+                android:ems="10"
+                android:hint="Registration Number"
+                android:inputType="text"
+                android:paddingBottom="12dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="28dp"
+                android:paddingTop="12dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#838485"
+                android:layout_marginLeft="56dp"
+                android:layout_marginRight="56dp"/>
 
-                <EditText
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:ems="10"
-                    android:hint="Email ID"
-                    android:inputType="textPersonName"
-                    android:paddingBottom="8dp"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="28dp"
-                    android:textColor="#ffffff" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/regnoLayout"
+            <EditText
+                android:layout_marginTop="18dp"
+                android:id="@+id/phno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/edittext"
-                android:paddingTop="10dp"
-                app:errorTextAppearance="#ffffff"
-                android:textColorHint="#838485">
+                android:ems="10"
+                android:hint="Phone Number"
+                android:inputType="number"
+                android:paddingBottom="12dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="28dp"
+                android:paddingTop="12dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#838485"
+                android:layout_marginLeft="56dp"
+                android:layout_marginRight="56dp"/>
 
-                <EditText
-                    android:id="@+id/regno"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:ems="10"
-                    android:hint="Registration Number"
-                    android:inputType="textPersonName"
-                    android:paddingBottom="8dp"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="28dp"
-                    android:textColor="#ffffff" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/phnoLayout"
+            <EditText
+                android:layout_marginTop="18dp"
+                android:id="@+id/pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/edittext"
-                android:paddingTop="10dp"
-                app:errorTextAppearance="#ffffff"
-                android:textColorHint="#838485">
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingBottom="12dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="28dp"
+                android:paddingTop="12dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#838485"
+                android:layout_marginLeft="56dp"
+                android:layout_marginRight="56dp"/>
 
-                <EditText
-                    android:id="@+id/phno"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:ems="10"
-                    android:hint="Phone Number"
-                    android:inputType="textPersonName"
-                    android:paddingBottom="8dp"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="28dp"
-                    android:textColor="#ffffff" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/passLayout"
+            <EditText
+                android:layout_marginTop="18dp"
+                android:id="@+id/cnfpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/edittext"
-                android:paddingTop="10dp"
-                app:errorTextAppearance="#ffffff"
-                android:textColorHint="#838485">
-
-                <EditText
-                    android:id="@+id/pass"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:ems="10"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:paddingBottom="8dp"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="28dp"
-                    android:textColor="#ffffff" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/cnfpassLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:paddingBottom="12dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="28dp"
+                android:paddingTop="12dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#838485"
                 android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittext"
-                android:paddingTop="10dp"
-                android:textColorHint="#838485">
-
-                <EditText
-                    android:id="@+id/cnfpass"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:ems="10"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"
-                    android:paddingBottom="8dp"
-                    app:errorTextAppearance="#ffffff"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="28dp"
-                    android:textColor="#ffffff" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_marginRight="56dp"/>
 
             <Button
                 android:id="@+id/button"
@@ -179,8 +139,16 @@
                 android:text="Sign Up"
                 android:layout_marginBottom="20dp"
                 android:textColor="#ffffff"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
