@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import org.w3c.dom.Text;
 
 public class signUp extends AppCompatActivity {
-    Button button = (Button) findViewById(R.id.button);
+    Button button;
     TextView Email,regNo,Pass,CnfPass;
     ProgressBar prog;
     private FirebaseAuth mAuth;
@@ -34,6 +34,7 @@ public class signUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         initializeWidgets();
+        button = (Button) findViewById(R.id.button);
         button.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -91,6 +92,7 @@ public class signUp extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             prog.setVisibility(View.GONE);
+                            button.setText("SIGN UP");
                             if (task.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(),"Successfully registered!", Toast.LENGTH_SHORT).show();
                             }

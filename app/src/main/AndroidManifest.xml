@@ -19,7 +19,6 @@
         <activity android:name=".signUp">
             <intent-filter>
             <action android:name="com.ieeevit.noctis.signUp" />
-
             <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
