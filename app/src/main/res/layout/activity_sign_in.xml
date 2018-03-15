@@ -89,6 +89,7 @@
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:textColor="#FFFFFF"
+                android:layout_marginBottom="8dp"
                 />
 
             <TextView
