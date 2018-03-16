@@ -36,7 +36,7 @@
                 android:textSize="26sp"
                 android:textStyle="bold"/>
              <EditText
-                 android:layout_marginTop="16dp"
+                 android:layout_marginTop="54dp"
                  android:id="@+id/email"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
