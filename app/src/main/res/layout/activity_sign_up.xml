@@ -36,7 +36,7 @@
                 android:textSize="26sp"
                 android:textStyle="bold"/>
              <EditText
-                 android:layout_marginTop="36dp"
+                 android:layout_marginTop="16dp"
                  android:id="@+id/email"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
@@ -50,11 +50,13 @@
                  android:paddingTop="12dp"
                  android:textColor="#ffffff"
                  android:textColorHint="#838485"
-                 android:layout_marginLeft="56dp"
-                 android:layout_marginRight="56dp"/>
+            android:layout_marginLeft="56dp"
+            android:layout_marginRight="56dp"
+                 android:layout_marginBottom="12dp"/>
+
 
             <EditText
-                android:layout_marginTop="18dp"
+
                 android:id="@+id/regno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,10 +71,11 @@
                 android:textColor="#ffffff"
                 android:textColorHint="#838485"
                 android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"/>
+                android:layout_marginRight="56dp"
+                android:layout_marginBottom="12dp"/>
+
 
             <EditText
-                android:layout_marginTop="18dp"
                 android:id="@+id/phno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,10 +90,12 @@
                 android:textColor="#ffffff"
                 android:textColorHint="#838485"
                 android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"/>
+                android:layout_marginRight="56dp"
+                android:layout_marginBottom="12dp"/>
+
 
             <EditText
-                android:layout_marginTop="18dp"
+
                 android:id="@+id/pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,10 +110,12 @@
                 android:textColor="#ffffff"
                 android:textColorHint="#838485"
                 android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"/>
+                android:layout_marginRight="56dp"
+                android:layout_marginBottom="12dp"/>
+
 
             <EditText
-                android:layout_marginTop="18dp"
+
                 android:id="@+id/cnfpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,30 +132,33 @@
                 android:layout_marginLeft="56dp"
                 android:layout_marginRight="56dp"/>
 
-            <Button
-                android:id="@+id/button"
+            <TextView
+                android:id="@+id/errorcnfPass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/button"
-                android:paddingBottom="12dp"
-                android:paddingLeft="32dp"
-                android:paddingRight="32dp"
-                android:paddingTop="12dp"
-                android:text="Sign Up"
-                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="72dp"
+                android:layout_marginRight="56dp"
+                android:text="Email Error"
+                android:layout_marginBottom="12dp"
+                android:visibility="invisible"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
+                android:textStyle="bold"
+                />
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    android:paddingTop="12dp"
+                    android:text="Sign up"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

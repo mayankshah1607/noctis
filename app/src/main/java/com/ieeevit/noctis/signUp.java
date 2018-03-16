@@ -9,6 +9,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,14 +18,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
 public class signUp extends AppCompatActivity {
     Button button;
-    TextView Email,regNo,Pass,CnfPass;
-    ProgressBar prog;
+    EditText Email,regNo,Pass,CnfPass,Phno;
     private FirebaseAuth mAuth;
 
 
@@ -48,56 +49,80 @@ public class signUp extends AppCompatActivity {
     private void createUser(){
         boolean check = false;
         mAuth = FirebaseAuth.getInstance();
-        prog = (ProgressBar) findViewById(R.id.progressBar);
         String email = Email.getText().toString().trim();
         String regno = regNo.getText().toString().trim();
         String pass = Pass.getText().toString().trim();
         String cnfpass = CnfPass.getText().toString().trim();
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Email.setError("Please enter a valid email address");
+        String phno = Phno.getText().toString().trim();
+
+
+
+        if (email.isEmpty()) {
+            Toast.makeText(getApplicationContext(),"Enter your email address", Toast.LENGTH_SHORT).show();
             check=true;
+            return;
+        }
+
+        if (regno.isEmpty()) {
+            Toast.makeText(getApplicationContext(),"Enter your registration number", Toast.LENGTH_SHORT).show();
+            check=true;
+            return;}
+
+        if (phno.isEmpty()) {
+            Toast.makeText(getApplicationContext(),"Enter your phone number", Toast.LENGTH_SHORT).show();
+            check=true;
+        }
+
+        if (pass.isEmpty()) {
+            Toast.makeText(getApplicationContext(),"Enter a desired password", Toast.LENGTH_SHORT).show();
+            check=true;
+            return;
+        }
+
+        if (cnfpass.isEmpty()) {
+            Toast.makeText(getApplicationContext(),"Please confirm your password", Toast.LENGTH_SHORT).show();
+            check=true;
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(getApplicationContext(),"Enter a valid email address", Toast.LENGTH_SHORT).show();
+            check=true;
+            return;
         }
 
         if (pass.length()<6) {
-            Pass.setError("Password must be at least 6 characters long.");
+            Toast.makeText(getApplicationContext(),"Password must be at least 6 characters long", Toast.LENGTH_SHORT).show();
+            check=true;
+            return;
         }
 
-        if (email.isEmpty()) {
-            Email.setError("This field cannot be empty.");
-            check = true;
-        }
-        if (regno.isEmpty()) {
-            regNo.setError("This field cannot be empty.");
+        if (phno.length()!=10) {
+            Toast.makeText(getApplicationContext(),"Enter a valid phone number", Toast.LENGTH_SHORT).show();
             check=true;
-        }
-        if (pass.isEmpty()) {
-            Pass.setError("This field cannot be empty.");
-            check=true;
-        }
-        if (cnfpass.isEmpty()) {
-            CnfPass.setError("This field cannot be empty.");
-            check=true;
-        }
+            return;}
+
 
         if (!pass.equals(cnfpass)) {
-            CnfPass.setError("Passwords do no match.");
+            Toast.makeText(getApplicationContext(),"Passwords do not match", Toast.LENGTH_SHORT).show();
             check=true;
+            return;
         }
 
         if (check==false) {
-            prog.setVisibility(View.VISIBLE);
-            button.setText("SIGNING UP...");
+            button.setText("Signing up...");
             mAuth.createUserWithEmailAndPassword(email, pass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            prog.setVisibility(View.GONE);
                             button.setText("SIGN UP");
                             if (task.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(),"Successfully registered!", Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                Toast.makeText(getApplicationContext(),"An unexpected error occured", Toast.LENGTH_SHORT).show();
+                                if (task.getException() instanceof FirebaseAuthUserCollisionException){
+                                    Toast.makeText(getApplicationContext(),"An account already exists with this email ID", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                     });
@@ -108,10 +133,11 @@ public class signUp extends AppCompatActivity {
 
     private void initializeWidgets() {
         button = (Button) findViewById(R.id.button);
-        Email = (TextView) findViewById(R.id.email);
-        regNo = (TextView) findViewById(R.id.regno);
-        Pass = (TextView) findViewById(R.id.pass);
-        CnfPass = (TextView) findViewById(R.id.cnfpass);
+        Email = (EditText) findViewById(R.id.email);
+        regNo = (EditText) findViewById(R.id.regno);
+        Pass = (EditText) findViewById(R.id.pass);
+        CnfPass = (EditText) findViewById(R.id.cnfpass);
+        Phno = (EditText) findViewById(R.id.phno);
 
     }
 
