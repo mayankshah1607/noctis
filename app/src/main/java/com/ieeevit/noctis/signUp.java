@@ -123,6 +123,9 @@ public class signUp extends AppCompatActivity {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException){
                                     Toast.makeText(getApplicationContext(),"An account already exists with this email ID", Toast.LENGTH_SHORT).show();
                                 }
+                                else {
+                                    Toast.makeText(getApplicationContext(),"An unexpected error has occured", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                     });

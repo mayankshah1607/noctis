@@ -58,7 +58,7 @@
 
             <EditText
 
-                android:id="@+id/regno"
+                android:id="@+id/pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext"
@@ -93,14 +93,15 @@
                 />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/forgot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Forgot your password?"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
-                android:layout_marginBottom="44dp"/>
+                android:layout_marginBottom="44dp"
+                android:textStyle="bold"/>
             >
 
             <TextView
