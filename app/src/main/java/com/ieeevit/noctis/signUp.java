@@ -21,8 +21,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class signUp extends AppCompatActivity {
     Button button;
@@ -51,12 +56,12 @@ public class signUp extends AppCompatActivity {
     private void createUser(){
         boolean check = false;
         mAuth = FirebaseAuth.getInstance();
-        String email = Email.getText().toString().trim();
-        String regno = regNo.getText().toString().trim();
-        String pass = Pass.getText().toString().trim();
-        String cnfpass = CnfPass.getText().toString().trim();
-        String phno = Phno.getText().toString().trim();
-        String type;
+        final String email = Email.getText().toString().trim();
+        final String regno = regNo.getText().toString().trim();
+        final String pass = Pass.getText().toString().trim();
+        final String cnfpass = CnfPass.getText().toString().trim();
+        final String phno = Phno.getText().toString().trim();
+        final String type;
         if (checkBox.isChecked()) {
             type="Admin";
         }
@@ -126,11 +131,21 @@ public class signUp extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             button.setText("SIGN UP");
                             if (task.isSuccessful()) {
+                                String userID = mAuth.getCurrentUser().getUid();
+                                DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+                                Map newMap = new HashMap();
+                                newMap.put("Email",email);
+                                newMap.put("Registration Number",regno);
+                                newMap.put("Phone Number",phno);
+                                newMap.put("Account Type",type);
+                                currentUserDb.setValue(newMap);
                                 Toast.makeText(getApplicationContext(),"Successfully registered!", Toast.LENGTH_SHORT).show();
+
                             }
                             else {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException){
                                     Toast.makeText(getApplicationContext(),"An account already exists with this email ID", Toast.LENGTH_SHORT).show();
+
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(),"An unexpected error has occured", Toast.LENGTH_SHORT).show();
