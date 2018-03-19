@@ -36,7 +36,7 @@
                 android:textSize="26sp"
                 android:textStyle="bold"/>
              <EditText
-                 android:layout_marginTop="54dp"
+                 android:layout_marginTop="50dp"
                  android:id="@+id/email"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
@@ -130,20 +130,18 @@
                 android:textColor="#ffffff"
                 android:textColorHint="#838485"
                 android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"/>
+                android:layout_marginRight="56dp"
+                android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/errorcnfPass"
+            <CheckBox
+                android:id="@+id/cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="72dp"
-                android:layout_marginRight="56dp"
-                android:text="Email Error"
-                android:layout_marginBottom="12dp"
-                android:visibility="invisible"
+                android:text="Sign up as Admin"
+                android:layout_gravity="center"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
-                />
+                android:layout_marginBottom="22dp"/>
+
                 <Button
                     android:id="@+id/button"
                     android:layout_width="wrap_content"

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import org.w3c.dom.Text;
 public class signUp extends AppCompatActivity {
     Button button;
     EditText Email,regNo,Pass,CnfPass,Phno;
+    CheckBox checkBox;
     private FirebaseAuth mAuth;
 
 
@@ -54,6 +56,13 @@ public class signUp extends AppCompatActivity {
         String pass = Pass.getText().toString().trim();
         String cnfpass = CnfPass.getText().toString().trim();
         String phno = Phno.getText().toString().trim();
+        String type;
+        if (checkBox.isChecked()) {
+            type="Admin";
+        }
+        else {
+            type = "Normal";
+        }
 
 
 
@@ -141,6 +150,7 @@ public class signUp extends AppCompatActivity {
         Pass = (EditText) findViewById(R.id.pass);
         CnfPass = (EditText) findViewById(R.id.cnfpass);
         Phno = (EditText) findViewById(R.id.phno);
+        checkBox = (CheckBox) findViewById(R.id.cb);
 
     }
 
