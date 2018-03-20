@@ -1,5 +1,6 @@
 package com.ieeevit.noctis;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -140,6 +141,9 @@ public class signUp extends AppCompatActivity {
                                 newMap.put("Account Type",type);
                                 currentUserDb.setValue(newMap);
                                 Toast.makeText(getApplicationContext(),"Successfully registered!", Toast.LENGTH_SHORT).show();
+                                Intent toSignIn = new Intent(signUp.this,signIn.class);
+                                startActivity(toSignIn);
+                                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
 
                             }
                             else {

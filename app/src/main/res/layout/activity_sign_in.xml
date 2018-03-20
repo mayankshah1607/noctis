@@ -76,7 +76,7 @@
                 android:layout_marginRight="56dp"/>
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Log in as Admin"
