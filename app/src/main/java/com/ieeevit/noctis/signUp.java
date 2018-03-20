@@ -144,6 +144,7 @@ public class signUp extends AppCompatActivity {
                                 Intent toSignIn = new Intent(signUp.this,signIn.class);
                                 startActivity(toSignIn);
                                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+                                finish();
 
                             }
                             else {

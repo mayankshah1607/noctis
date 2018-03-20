@@ -53,6 +53,7 @@ public class signIn extends AppCompatActivity {
                 }
         );
 
+
     }
 
     private void startApp() {
@@ -96,11 +97,13 @@ public class signIn extends AppCompatActivity {
                                 if (loginType.equals("Admin")) {
                                     Intent toAdmin = new Intent(signIn.this,MainAdmin.class);
                                     startActivity(toAdmin);
+                                    finish();
                                 }
 
                                 if (loginType.equals("Normal")) {
                                     Intent toUser = new Intent(signIn.this,MainUser.class);
                                     startActivity(toUser);
+                                    finish();
                                 }
                             }
 
@@ -113,6 +116,7 @@ public class signIn extends AppCompatActivity {
                                 if (loginType.equals("Normal")) {
                                     Intent toUser = new Intent(signIn.this,MainUser.class);
                                     startActivity(toUser);
+                                    finish();
                                 }
                             }
                         }
