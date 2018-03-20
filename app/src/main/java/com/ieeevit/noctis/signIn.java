@@ -66,7 +66,7 @@ public class signIn extends AppCompatActivity {
                 login.setText("Log in");
                 if (task.isSuccessful()){
                     //Sign In
-                    Intent mainIntent = new Intent(signIn.this,Main.class);
+                    Intent mainIntent = new Intent(signIn.this,MainUser.class);
                     startActivity(mainIntent);
                     finish();
                 }

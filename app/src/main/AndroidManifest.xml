@@ -31,8 +31,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main"
-            android:label="@string/title_activity_main"
+            android:name=".MainUser"
+            android:label="@string/title_activity_main_user"
             android:theme="@style/AppTheme"></activity>
     </application>
 
