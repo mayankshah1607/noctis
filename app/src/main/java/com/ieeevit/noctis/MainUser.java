@@ -17,17 +17,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainUser extends AppCompatActivity {
     private SecitionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_user);
-
         mSectionsPageAdapter = new SecitionsPageAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.container);
