@@ -23,6 +23,7 @@ public class MainUserApply extends Fragment {
     Button fromDate,fromTime,toDate,toTime;
     DatePickerDialog.OnDateSetListener pick1,pick2;
     TimePickerDialog.OnTimeSetListener pick3,pick4;
+    String dateToday;
 
     @Nullable
     @Override
@@ -40,6 +41,30 @@ public class MainUserApply extends Fragment {
     }
 
     private void settodate() {
+        toDate.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Calendar cal = Calendar.getInstance();
+                        int year = cal.get(Calendar.YEAR);
+                        int day = cal.get(Calendar.DAY_OF_MONTH);
+                        int month = cal.get(Calendar.MONTH);
+
+                        DatePickerDialog dialog = new DatePickerDialog(
+                                getActivity(),R.style.DialogTheme,pick2,year,month,day);
+                        dialog.getWindow();
+                        dialog.show();
+                    }
+                });
+        pick2 = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                String date = day + "-" + month + "-" + year;
+                toDate.setText(date);
+                toDate.setBackground(getResources().getDrawable(R.drawable.button_green));
+            }
+        };
     }
 
     private void setfromtime() {
@@ -57,7 +82,7 @@ public class MainUserApply extends Fragment {
                         int year = cal.get(Calendar.YEAR);
                         int day = cal.get(Calendar.DAY_OF_MONTH);
                         int month = cal.get(Calendar.MONTH);
-
+                        dateToday = day + "-" + month + "-" + year;
                         DatePickerDialog dialog = new DatePickerDialog(
                                 getActivity(),R.style.DialogTheme,pick1,year,month,day);
                         dialog.getWindow();
