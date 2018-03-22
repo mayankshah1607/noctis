@@ -7,13 +7,19 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.TimeUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
+import java.sql.Time;
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.TimeZone;
+import java.util.Timer;
 
 /**
  * Created by Mayank on 3/20/2018.
@@ -68,9 +74,53 @@ public class MainUserApply extends Fragment {
     }
 
     private void setfromtime() {
+        fromTime.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        TimePickerDialog dialog = new TimePickerDialog(
+                                getActivity(),R.style.DialogTheme,pick3,0,0,false);
+                        dialog.getWindow();
+                        dialog.show();
+                    }
+                });
+        pick3 = new TimePickerDialog.OnTimeSetListener(){
+            @Override
+            public void onTimeSet(TimePicker timePicker, int h, int m) {
+                String hour="",mins="",time;
+                if (h<10) {hour = "0"+h;}
+                if (m<10) {mins = "0"+m;}
+                time = hour+":"+mins+"hrs";
+                fromTime.setText(time);
+                fromTime.setBackground(getResources().getDrawable(R.drawable.button_green));
+
+            }
+        };
     }
 
     private void settotime() {
+        toTime.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        TimePickerDialog dialog = new TimePickerDialog(
+                                getActivity(),R.style.DialogTheme,pick4,0,0,false);
+                        dialog.getWindow();
+                        dialog.show();
+                    }
+                });
+        pick4 = new TimePickerDialog.OnTimeSetListener(){
+            @Override
+            public void onTimeSet(TimePicker timePicker, int h, int m) {
+                String hour="",mins="",time;
+                if (h<10) {hour = "0"+h;}
+                if (m<10) {mins = "0"+m;}
+                time = hour+":"+mins+"hrs";
+               toTime.setText(time);
+                toTime.setBackground(getResources().getDrawable(R.drawable.button_green));
+
+            }
+        };
     }
 
     private void setfromdate() {
