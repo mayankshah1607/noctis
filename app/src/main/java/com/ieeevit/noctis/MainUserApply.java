@@ -89,7 +89,9 @@ public class MainUserApply extends Fragment {
             public void onTimeSet(TimePicker timePicker, int h, int m) {
                 String hour="",mins="",time;
                 if (h<10) {hour = "0"+h;}
+                else {hour = ""+h;}
                 if (m<10) {mins = "0"+m;}
+                else {mins = ""+m;}
                 time = hour+":"+mins+"hrs";
                 fromTime.setText(time);
                 fromTime.setBackground(getResources().getDrawable(R.drawable.button_green));
@@ -114,7 +116,9 @@ public class MainUserApply extends Fragment {
             public void onTimeSet(TimePicker timePicker, int h, int m) {
                 String hour="",mins="",time;
                 if (h<10) {hour = "0"+h;}
+                else {hour = ""+h;}
                 if (m<10) {mins = "0"+m;}
+                else {mins = ""+m;}
                 time = hour+":"+mins+"hrs";
                toTime.setText(time);
                 toTime.setBackground(getResources().getDrawable(R.drawable.button_green));
