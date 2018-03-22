@@ -60,16 +60,17 @@ public class MainUserApply extends Fragment {
 
                         DatePickerDialog dialog = new DatePickerDialog(
                                 getActivity(),R.style.DialogTheme,pick1,year,month,day);
-                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.getWindow();
+                        dialog.show();
                     }
                 });
         pick1 = new DatePickerDialog.OnDateSetListener(){
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-                String date = day + "-" + month + "year";
+                String date = day + "-" + month + "-" + year;
                 fromDate.setText(date);
-                fromDate.setBackgroundColor(getResources().getColor(R.color.ButtonGreen));
+                fromDate.setBackground(getResources().getDrawable(R.drawable.button_green));
             }
         };
     }
