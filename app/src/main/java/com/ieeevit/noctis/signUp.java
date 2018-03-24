@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class signUp extends AppCompatActivity {
     Button button;
-    EditText Email,regNo,Pass,CnfPass,Phno;
+    EditText Email,regNo,Pass,CnfPass,Phno,Name;
     CheckBox checkBox;
     private FirebaseAuth mAuth;
 
@@ -62,6 +62,7 @@ public class signUp extends AppCompatActivity {
         final String pass = Pass.getText().toString().trim();
         final String cnfpass = CnfPass.getText().toString().trim();
         final String phno = Phno.getText().toString().trim();
+        final String name = Name.getText().toString().trim();
         final String type;
         if (checkBox.isChecked()) {
             type="Admin";
@@ -74,6 +75,12 @@ public class signUp extends AppCompatActivity {
 
         if (email.isEmpty()) {
             Toast.makeText(getApplicationContext(),"Enter your email address", Toast.LENGTH_SHORT).show();
+            check=true;
+            return;
+        }
+
+        if (name.isEmpty()) {
+            Toast.makeText(getApplicationContext(),"Enter your email Name", Toast.LENGTH_SHORT).show();
             check=true;
             return;
         }
@@ -139,6 +146,7 @@ public class signUp extends AppCompatActivity {
                                 newMap.put("Registration Number",regno);
                                 newMap.put("Phone Number",phno);
                                 newMap.put("Account Type",type);
+                                newMap.put("Name",name);
                                 currentUserDb.setValue(newMap);
                                 Toast.makeText(getApplicationContext(),"Successfully registered!", Toast.LENGTH_SHORT).show();
                                 Intent toSignIn = new Intent(signUp.this,signIn.class);
@@ -171,6 +179,7 @@ public class signUp extends AppCompatActivity {
         CnfPass = (EditText) findViewById(R.id.cnfpass);
         Phno = (EditText) findViewById(R.id.phno);
         checkBox = (CheckBox) findViewById(R.id.cb);
+        Name = (EditText) findViewById(R.id.name);
 
     }
 

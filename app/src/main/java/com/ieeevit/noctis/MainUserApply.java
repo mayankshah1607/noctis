@@ -29,7 +29,7 @@ public class MainUserApply extends Fragment {
     Button fromDate,fromTime,toDate,toTime;
     DatePickerDialog.OnDateSetListener pick1,pick2;
     TimePickerDialog.OnTimeSetListener pick3,pick4;
-    String dateToday;
+    String dateToday,finalToDate,finalFromdate,finalToTime,finalFromTime;
 
     @Nullable
     @Override
@@ -67,6 +67,7 @@ public class MainUserApply extends Fragment {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
                 String date = day + "-" + month + "-" + year;
+                finalToDate=date;
                 toDate.setText(date);
                 toDate.setBackground(getResources().getDrawable(R.drawable.button_green));
             }
@@ -93,6 +94,7 @@ public class MainUserApply extends Fragment {
                 if (m<10) {mins = "0"+m;}
                 else {mins = ""+m;}
                 time = hour+":"+mins+"hrs";
+                finalFromTime=time;
                 fromTime.setText(time);
                 fromTime.setBackground(getResources().getDrawable(R.drawable.button_green));
 
@@ -120,6 +122,7 @@ public class MainUserApply extends Fragment {
                 if (m<10) {mins = "0"+m;}
                 else {mins = ""+m;}
                 time = hour+":"+mins+"hrs";
+                finalToTime=time;
                toTime.setText(time);
                 toTime.setBackground(getResources().getDrawable(R.drawable.button_green));
 
@@ -148,6 +151,7 @@ public class MainUserApply extends Fragment {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
                 String date = day + "-" + month + "-" + year;
+                finalFromdate=date;
                 fromDate.setText(date);
                 fromDate.setBackground(getResources().getDrawable(R.drawable.button_green));
             }
