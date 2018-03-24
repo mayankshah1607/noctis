@@ -43,9 +43,9 @@ public class MainUserApply extends Fragment {
     Button fromDate,fromTime,toDate,toTime,Apply;
     DatePickerDialog.OnDateSetListener pick1,pick2;
     TimePickerDialog.OnTimeSetListener pick3,pick4;
-    String dateToday,finalToDate,finalFromdate,finalToTime,finalFromTime;
+    String dateToday,finalToDate="",finalFromdate="",finalToTime="",finalFromTime="";
     String curName,curReg,curEmail,curPh;
-    EditText adminEmail;
+    EditText adminEmail,roomNo;
     FirebaseAuth mAuth;
 
 
@@ -59,6 +59,7 @@ public class MainUserApply extends Fragment {
         toTime = (Button) view.findViewById(R.id.totimebutton);
         Apply = (Button) view.findViewById(R.id.applybutton);
         adminEmail = (EditText) view.findViewById(R.id.adminemail);
+        roomNo = (EditText) view.findViewById(R.id.roomno);
         //getUserData();
         setfromdate();
         settodate();
@@ -74,7 +75,13 @@ public class MainUserApply extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        if (finalFromdate.isEmpty() || finalToDate.isEmpty() || finalFromTime.isEmpty() || finalToTime.isEmpty() || adminEmail.getText().toString().trim().isEmpty() || roomNo.getText().toString().trim().isEmpty()) {
+                            Toast.makeText(getActivity(),"Please fill in all the fields", Toast.LENGTH_SHORT).show();
+                            return ;
+                        }
+                        else {
                         String AdminEmail = adminEmail.getText().toString().trim();
+                        String RoomNo = roomNo.getText().toString().trim();
                         String currentuser = FirebaseAuth.getInstance().getUid();
                         DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("History").child(dateToday);
                         Map newMap = new HashMap();
@@ -84,7 +91,7 @@ public class MainUserApply extends Fragment {
                         newMap.put("To Time",finalToTime);
                         newMap.put("Admin",AdminEmail);
                         currentUserDb.setValue(newMap);
-                        Toast.makeText(getActivity(),"Successfully Applied!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"Successfully Applied!", Toast.LENGTH_SHORT).show();}
                     }
                 }
         );
