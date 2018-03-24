@@ -123,6 +123,7 @@ public class signIn extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
+                            login.setText("Log in");
                             Toast.makeText(getApplicationContext(),"No Internet Connection", Toast.LENGTH_SHORT).show();
                         }
                     });
