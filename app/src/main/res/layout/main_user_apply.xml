@@ -88,13 +88,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="23dp"
                 android:background="@drawable/darkbutton"
                 android:paddingLeft="23dp"
                 android:paddingRight="23dp"
                 android:text="PIck time"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/adminemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Admin Email ID"
+                android:layout_marginRight="56dp"
+                android:layout_marginLeft="56dp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/roomno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Block and Room Number"
+                android:layout_marginRight="56dp"
+                android:layout_marginLeft="56dp"
+                android:layout_marginBottom="23dp"/>
 
             <Button
                 android:id="@+id/applybutton"
@@ -109,6 +131,8 @@
                 android:text="apply"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
+
+
 
         </LinearLayout>
 

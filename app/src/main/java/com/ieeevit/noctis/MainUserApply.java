@@ -2,6 +2,7 @@ package com.ieeevit.noctis;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,11 +14,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Time;
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.Timer;
 
@@ -26,10 +40,14 @@ import java.util.Timer;
  */
 
 public class MainUserApply extends Fragment {
-    Button fromDate,fromTime,toDate,toTime;
+    Button fromDate,fromTime,toDate,toTime,Apply;
     DatePickerDialog.OnDateSetListener pick1,pick2;
     TimePickerDialog.OnTimeSetListener pick3,pick4;
     String dateToday,finalToDate,finalFromdate,finalToTime,finalFromTime;
+    String curName,curReg,curEmail,curPh;
+    EditText adminEmail;
+    FirebaseAuth mAuth;
+
 
     @Nullable
     @Override
@@ -39,12 +57,40 @@ public class MainUserApply extends Fragment {
         fromTime = (Button) view.findViewById(R.id.fromtimebutton);
         toDate = (Button) view.findViewById(R.id.todatebutton);
         toTime = (Button) view.findViewById(R.id.totimebutton);
+        Apply = (Button) view.findViewById(R.id.applybutton);
+        adminEmail = (EditText) view.findViewById(R.id.adminemail);
+        //getUserData();
         setfromdate();
         settodate();
         setfromtime();
         settotime();
+        apply();
         return view;
     }
+
+    private void apply() {
+
+        Apply.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String AdminEmail = adminEmail.getText().toString().trim();
+                        String currentuser = FirebaseAuth.getInstance().getUid();
+                        DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("History").child(dateToday);
+                        Map newMap = new HashMap();
+                        newMap.put("From Date",finalFromdate);
+                        newMap.put("From Time",finalFromTime);
+                        newMap.put("To Date",finalToDate);
+                        newMap.put("To Time",finalToTime);
+                        newMap.put("Admin",AdminEmail);
+                        currentUserDb.setValue(newMap);
+                        Toast.makeText(getActivity(),"Successfully Applied!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+    }
+
+
 
     private void settodate() {
         toDate.setOnClickListener(
