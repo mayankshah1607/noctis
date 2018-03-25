@@ -46,8 +46,8 @@ public class MainUserApply extends Fragment {
     String dateToday,finalToDate="",finalFromdate="",finalToTime="",finalFromTime="";
     String curName,curReg,curEmail,curPh;
     EditText adminEmail,roomNo;
-    FirebaseAuth mAuth;
-    DatabaseReference curUserDb;
+    //FirebaseAuth mAuth;
+    //DatabaseReference curUserDb;
     String currentuser;
     DatabaseReference nameRef,emailRef,phRef,regRef;
 
