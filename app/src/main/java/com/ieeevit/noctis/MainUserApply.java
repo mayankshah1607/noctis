@@ -170,7 +170,16 @@ public class MainUserApply extends Fragment {
                         currentLeaveDb.setValue(map2);
                         Apply.setText("Apply");
                         Toast.makeText(getActivity(),"Successfully Applied!", Toast.LENGTH_SHORT).show();
-
+                        fromDate.setText("Pick date");
+                        fromDate.setBackground(getResources().getDrawable(R.drawable.darkbutton));
+                        toDate.setText("Pick date");
+                        toDate.setBackground(getResources().getDrawable(R.drawable.darkbutton));
+                        fromTime.setText("Pick Time");
+                        fromTime.setBackground(getResources().getDrawable(R.drawable.darkbutton));
+                        toTime.setText("Pick Time");
+                        toTime.setBackground(getResources().getDrawable(R.drawable.darkbutton));
+                        adminEmail.setText("");
+                        roomNo.setText("");
                     } // else ends Here
                     }
                 }
