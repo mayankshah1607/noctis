@@ -80,7 +80,7 @@ public class MainUserApply extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 curName = dataSnapshot.getValue().toString();
-                Toast.makeText(getActivity(),curName, Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -95,7 +95,7 @@ public class MainUserApply extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 curEmail = dataSnapshot.getValue().toString();
-                Toast.makeText(getActivity(),curEmail, Toast.LENGTH_SHORT).show();
+                ;
 
             }
 
@@ -110,7 +110,7 @@ public class MainUserApply extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 curPh = dataSnapshot.getValue().toString();
-                Toast.makeText(getActivity(),curPh, Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -125,7 +125,7 @@ public class MainUserApply extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 curReg = dataSnapshot.getValue().toString();
-                Toast.makeText(getActivity(),curReg, Toast.LENGTH_SHORT).show();
+
 
             }
 
