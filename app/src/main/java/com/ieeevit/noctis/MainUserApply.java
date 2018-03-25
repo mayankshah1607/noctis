@@ -149,6 +149,7 @@ public class MainUserApply extends Fragment {
                             return ;
                         }
                         else {
+                            Apply.setText("Please Wait...");
                         String AdminEmail = adminEmail.getText().toString().trim();
                         String RoomNo = roomNo.getText().toString().trim();
                         DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("History").child(dateToday);
@@ -160,6 +161,16 @@ public class MainUserApply extends Fragment {
                         newMap.put("To Time",finalToTime);
                         newMap.put("Admin",AdminEmail);
                         currentUserDb.setValue(newMap);
+
+                        DatabaseReference currentLeaveDb = FirebaseDatabase.getInstance().getReference().child("Leave Data").child(AdminEmail).child(dateToday).child(curName);
+                        map2.put("Name",curName);
+                        map2.put("Phone Number",curPh);
+                        map2.put("Email ID",curEmail);
+                        map2.put("Room Number",RoomNo);
+                        currentLeaveDb.setValue(map2);
+                        Apply.setText("Apply");
+                        Toast.makeText(getActivity(),"Successfully Applied!", Toast.LENGTH_SHORT).show();
+
                     } // else ends Here
                     }
                 }
