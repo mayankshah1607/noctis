@@ -47,6 +47,9 @@ public class MainUserApply extends Fragment {
     String curName,curReg,curEmail,curPh;
     EditText adminEmail,roomNo;
     FirebaseAuth mAuth;
+    DatabaseReference curUserDb;
+    String currentuser;
+    DatabaseReference nameRef,emailRef,phRef,regRef;
 
 
     @Nullable
@@ -60,7 +63,8 @@ public class MainUserApply extends Fragment {
         Apply = (Button) view.findViewById(R.id.applybutton);
         adminEmail = (EditText) view.findViewById(R.id.adminemail);
         roomNo = (EditText) view.findViewById(R.id.roomno);
-        //getUserData();
+        currentuser = FirebaseAuth.getInstance().getUid();
+        getUserData();
         setfromdate();
         settodate();
         setfromtime();
@@ -69,12 +73,77 @@ public class MainUserApply extends Fragment {
         return view;
     }
 
+
+    private void getUserData() {
+        nameRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Name");
+        nameRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                curName = dataSnapshot.getValue().toString();
+                Toast.makeText(getActivity(),curName, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getActivity(),"No Internet!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        emailRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Email");
+        emailRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                curEmail = dataSnapshot.getValue().toString();
+                Toast.makeText(getActivity(),curEmail, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getActivity(),"No Internet!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Phone Number");
+        phRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                curPh = dataSnapshot.getValue().toString();
+                Toast.makeText(getActivity(),curPh, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getActivity(),"No Internet!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Registration Number");
+        regRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                curReg = dataSnapshot.getValue().toString();
+                Toast.makeText(getActivity(),curReg, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getActivity(),"No Internet!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
     private void apply() {
 
         Apply.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         if (finalFromdate.isEmpty() || finalToDate.isEmpty() || finalFromTime.isEmpty() || finalToTime.isEmpty() || adminEmail.getText().toString().trim().isEmpty() || roomNo.getText().toString().trim().isEmpty()) {
                             Toast.makeText(getActivity(),"Please fill in all the fields", Toast.LENGTH_SHORT).show();
                             return ;
@@ -82,16 +151,16 @@ public class MainUserApply extends Fragment {
                         else {
                         String AdminEmail = adminEmail.getText().toString().trim();
                         String RoomNo = roomNo.getText().toString().trim();
-                        String currentuser = FirebaseAuth.getInstance().getUid();
                         DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("History").child(dateToday);
                         Map newMap = new HashMap();
+                        Map map2 = new HashMap();
                         newMap.put("From Date",finalFromdate);
                         newMap.put("From Time",finalFromTime);
                         newMap.put("To Date",finalToDate);
                         newMap.put("To Time",finalToTime);
                         newMap.put("Admin",AdminEmail);
                         currentUserDb.setValue(newMap);
-                        Toast.makeText(getActivity(),"Successfully Applied!", Toast.LENGTH_SHORT).show();}
+                    } // else ends Here
                     }
                 }
         );
