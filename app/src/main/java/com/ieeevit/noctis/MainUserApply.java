@@ -155,18 +155,18 @@ public class MainUserApply extends Fragment {
                         DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("History").child(dateToday);
                         Map newMap = new HashMap();
                         Map map2 = new HashMap();
-                        newMap.put("From Date",finalFromdate);
-                        newMap.put("From Time",finalFromTime);
-                        newMap.put("To Date",finalToDate);
-                        newMap.put("To Time",finalToTime);
+                        newMap.put("FromDate",finalFromdate);
+                        newMap.put("FromTime",finalFromTime);
+                        newMap.put("ToDate",finalToDate);
+                        newMap.put("ToTime",finalToTime);
                         newMap.put("Admin",AdminEmail);
                         currentUserDb.setValue(newMap);
 
                         DatabaseReference currentLeaveDb = FirebaseDatabase.getInstance().getReference().child("Leave Data").child(AdminEmail).child(dateToday).child(curName);
                         map2.put("Name",curName);
-                        map2.put("Phone Number",curPh);
-                        map2.put("Email ID",curEmail);
-                        map2.put("Room Number",RoomNo);
+                        map2.put("PhoneNumber",curPh);
+                        map2.put("EmailID",curEmail);
+                        map2.put("RoomNumber",RoomNo);
                         currentLeaveDb.setValue(map2);
                         Apply.setText("Apply");
                         Toast.makeText(getActivity(),"Successfully Applied!", Toast.LENGTH_SHORT).show();
