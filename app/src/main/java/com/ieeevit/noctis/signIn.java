@@ -109,8 +109,9 @@ public class signIn extends AppCompatActivity {
 
                             if (checkType.equals("Normal")) {
                                 if (loginType.equals("Admin")) {
+                                    login.setText("Log in");
                                     Toast.makeText(getApplicationContext(),"This account is not registered as an Admin", Toast.LENGTH_SHORT).show();
-
+                                    return;
                                 }
 
                                 if (loginType.equals("Normal")) {
@@ -129,8 +130,9 @@ public class signIn extends AppCompatActivity {
                     });
 
                 }
-                else {
+                else {login.setText("Log in");
                     Toast.makeText(getApplicationContext(),"Please check your credentials and try again", Toast.LENGTH_SHORT).show();
+                    return;
                 }
             }
         });

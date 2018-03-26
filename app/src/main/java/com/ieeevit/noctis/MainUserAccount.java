@@ -1,11 +1,14 @@
 package com.ieeevit.noctis;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -25,10 +28,12 @@ import java.sql.Ref;
 
 public class MainUserAccount extends Fragment {
 
-    String curName,curReg,curEmail,curPh,curAc,currentuser;
+    String curName,curReg,curEmail,curPh,curAc,currentuser, updatedAccType;;
     DatabaseReference nameRef,emailRef,phRef,regRef,accRef;
     EditText Name,Reg,Email,Phone;
     Switch switch1;
+    ProgressDialog progressDialog;
+    Button SaveProfile,SavePassword;
 
     @Nullable
     @Override
@@ -39,13 +44,49 @@ public class MainUserAccount extends Fragment {
         Reg = (EditText) view.findViewById(R.id.editTextReg);
         Email = (EditText) view.findViewById(R.id.editTextEmail);
         Phone = (EditText)view.findViewById(R.id.editTextPh);
+        SaveProfile = (Button) view.findViewById(R.id.savebutton);
         switch1 = (Switch) view.findViewById(R.id.switch1);
         getUserData();
+        saveProfileData();
         return view;
 
     }
 
+    private void saveProfileData() {
+        SaveProfile.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String updatedName = Name.getText().toString();
+                        String updatedReg = Reg.getText().toString();
+                        String updatedEmail = Email.getText().toString();
+                        String updatedPhone = Email.getText().toString();
+                        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                                if (b == true) {
+                                    updatedAccType="Admin";
+                                }
+                                else {
+                                    updatedAccType = "Normal";
+                                }
+                            }
+                        });
+
+
+                    }
+                }
+        );
+    }
+
     private void getUserData() {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Please Wait..."); // Setting Message
+        //progressDialog.setTitle("Please wait.."); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
+
         nameRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Name");
         nameRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -123,5 +164,7 @@ public class MainUserAccount extends Fragment {
                 Toast.makeText(getActivity(),"No Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
+        progressDialog.dismiss();
+
     }
 }
