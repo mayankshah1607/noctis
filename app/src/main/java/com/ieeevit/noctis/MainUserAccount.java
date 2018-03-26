@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Ref;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Mayank on 3/20/2018.
@@ -28,7 +30,7 @@ import java.sql.Ref;
 
 public class MainUserAccount extends Fragment {
 
-    String curName,curReg,curEmail,curPh,curAc,currentuser, updatedAccType;;
+    String curName,curReg,curEmail,curPh,curAc,currentuser, updatedAccType;
     DatabaseReference nameRef,emailRef,phRef,regRef,accRef;
     EditText Name,Reg,Email,Phone;
     Switch switch1;
@@ -46,38 +48,12 @@ public class MainUserAccount extends Fragment {
         Phone = (EditText)view.findViewById(R.id.editTextPh);
         SaveProfile = (Button) view.findViewById(R.id.savebutton);
         switch1 = (Switch) view.findViewById(R.id.switch1);
+        updatedAccType="Nigger";
         getUserData();
-        saveProfileData();
         return view;
 
     }
 
-    private void saveProfileData() {
-        SaveProfile.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String updatedName = Name.getText().toString();
-                        String updatedReg = Reg.getText().toString();
-                        String updatedEmail = Email.getText().toString();
-                        String updatedPhone = Email.getText().toString();
-                        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                                if (b == true) {
-                                    updatedAccType="Admin";
-                                }
-                                else {
-                                    updatedAccType = "Normal";
-                                }
-                            }
-                        });
-
-
-                    }
-                }
-        );
-    }
 
     private void getUserData() {
         progressDialog = new ProgressDialog(getActivity());
@@ -86,7 +62,6 @@ public class MainUserAccount extends Fragment {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
         progressDialog.show(); // Display Progress Dialog
         progressDialog.setCancelable(false);
-
         nameRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Name");
         nameRef.addValueEventListener(new ValueEventListener() {
             @Override

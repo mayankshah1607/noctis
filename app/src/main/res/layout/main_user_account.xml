@@ -285,9 +285,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LOG OUT"
-                android:textSize="26sp"
+                android:textSize="24sp"
                 android:layout_gravity="center"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#FF0000"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"/>
 
