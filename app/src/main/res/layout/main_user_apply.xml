@@ -105,7 +105,13 @@
                 android:hint="Admin Email ID"
                 android:layout_marginRight="56dp"
                 android:layout_marginLeft="56dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/edittext_light"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/roomno"
@@ -113,10 +119,16 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="Block and Room Number"
+                android:hint="Room Number"
                 android:layout_marginRight="56dp"
                 android:layout_marginLeft="56dp"
-                android:layout_marginBottom="23dp"/>
+                android:layout_marginBottom="23dp"
+                android:background="@drawable/edittext_light"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="32dp"
+                android:paddingRight="32dp"
+                android:textColor="#000000"/>
 
             <Button
                 android:id="@+id/applybutton"
