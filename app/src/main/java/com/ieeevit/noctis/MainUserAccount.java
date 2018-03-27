@@ -142,7 +142,7 @@ public class MainUserAccount extends Fragment {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                DatabaseReference emailRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Email");
+                                                DatabaseReference emailRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("EmailID");
                                                 emailRef.setValue(Email.getText().toString());
                                                 Toast.makeText(getActivity(),"Your details have been updated successfully", Toast.LENGTH_SHORT).show();;
                                             }
