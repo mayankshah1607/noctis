@@ -105,6 +105,9 @@ public class MainUserAccount extends Fragment {
                             }else {
                                 Toast.makeText(getActivity(),"Password has been successfully updated", Toast.LENGTH_SHORT).show();
                                 SavePassword.setText("update password");
+                                oldPass.setText("");
+                                newPass.setText("");
+                                CnfNewPass.setText("");
                             }
                         }
                     });
