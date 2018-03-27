@@ -34,7 +34,10 @@
             android:name=".MainUser"
             android:label="@string/title_activity_main_user"
             android:theme="@style/AppTheme" />
-        <activity android:name=".MainAdmin"></activity>
+        <activity
+            android:name=".MainAdmin"
+            android:label="@string/title_activity_main_admin"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
