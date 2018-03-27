@@ -130,6 +130,7 @@ public class MainUserAccount extends Fragment {
                             Toast.makeText(getActivity(),"Please fill in all the details", Toast.LENGTH_SHORT).show();
                         }
                         else {
+                        SaveProfile.setText("please wait...");
                         DatabaseReference nameRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Name");
                         nameRef.setValue(Name.getText().toString());
                         DatabaseReference regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Registration Number");
@@ -141,8 +142,9 @@ public class MainUserAccount extends Fragment {
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
+                                            SaveProfile.setText("save changes");
                                             if (task.isSuccessful()) {
-                                                DatabaseReference emailRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("EmailID");
+                                                DatabaseReference emailRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Email");
                                                 emailRef.setValue(Email.getText().toString());
                                                 Toast.makeText(getActivity(),"Your details have been updated successfully", Toast.LENGTH_SHORT).show();;
                                             }
