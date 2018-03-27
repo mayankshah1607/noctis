@@ -2,7 +2,9 @@ package com.ieeevit.noctis;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,12 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,8 +38,7 @@ import java.util.Map;
 public class MainUserAccount extends Fragment {
 
     String curName,curReg,curEmail,curPh,curAc,currentuser, updatedAccType;
-    DatabaseReference nameRef,emailRef,phRef,regRef,accRef;
-    EditText Name,Reg,Email,Phone;
+    EditText Name,Reg,Email,Phone,oldPass,newPass,CnfNewPass;
     Switch switch1;
     ProgressDialog progressDialog;
     Button SaveProfile,SavePassword;
@@ -47,15 +53,95 @@ public class MainUserAccount extends Fragment {
         Email = (EditText) view.findViewById(R.id.editTextEmail);
         Phone = (EditText)view.findViewById(R.id.editTextPh);
         SaveProfile = (Button) view.findViewById(R.id.savebutton);
+        SavePassword = (Button) view.findViewById(R.id.savepass);
         switch1 = (Switch) view.findViewById(R.id.switch1);
-        updatedAccType="Nigger";
+        oldPass = (EditText) view.findViewById(R.id.curPass);
+        newPass = (EditText) view.findViewById(R.id.newPass);
+        CnfNewPass = (EditText) view.findViewById(R.id.cnfnewPass);
+        updateUserdata();
         getUserData();
+        SavePassword.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        updatePassword();
+                    }
+                }
+        );
+
         return view;
+
+    }
+
+    private void updatePassword() {
+        final String NewPassword = newPass.getText().toString();
+        String OldPassword = oldPass.getText().toString();
+        String CnfNewPassword = CnfNewPass.getText().toString();
+        if (NewPassword.isEmpty() || OldPassword.isEmpty() || CnfNewPassword.isEmpty()) {
+            Toast.makeText(getActivity(),"Please fill in all the fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!NewPassword.equals(CnfNewPassword)) {
+            Toast.makeText(getActivity(),"Please re-confirm your password once again", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        SavePassword.setText("Please wait..");
+        final FirebaseUser user;
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        final String email = user.getEmail();
+        AuthCredential credential = EmailAuthProvider.getCredential(email,OldPassword);
+        user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    user.updatePassword(NewPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(!task.isSuccessful()){
+                                Toast.makeText(getActivity(),"Something went wrong. Try again later", Toast.LENGTH_SHORT).show();
+                                SavePassword.setText("update password");
+                            }else {
+                                Toast.makeText(getActivity(),"Password has been successfully updated", Toast.LENGTH_SHORT).show();
+                                SavePassword.setText("update password");
+                            }
+                        }
+                    });
+                }else {
+                    Toast.makeText(getActivity(),"Your old password does not match", Toast.LENGTH_SHORT).show();
+                    SavePassword.setText("update password");
+                }
+            }
+        });
+    }
+
+
+    private void updateUserdata() {
+        SaveProfile.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (Name.getText().toString().isEmpty() || Reg.getText().toString().isEmpty() || Phone.getText().toString().isEmpty()) {
+                            Toast.makeText(getActivity(),"Please fill in all the details", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                        DatabaseReference nameRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Name");
+                        nameRef.setValue(Name.getText().toString());
+                        DatabaseReference regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Registration Number");
+                        regRef.setValue(Reg.getText().toString());
+                        DatabaseReference phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Phone Number");
+                        phRef.setValue(Phone.getText().toString());
+                        Toast.makeText(getActivity(),"Done", Toast.LENGTH_SHORT).show();}
+                    }
+                }
+        );
 
     }
 
 
     private void getUserData() {
+        DatabaseReference nameRef,emailRef,phRef,regRef,accRef;
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please Wait..."); // Setting Message
         //progressDialog.setTitle("Please wait.."); // Setting Title
