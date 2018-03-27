@@ -130,6 +130,12 @@ public class MainUserAccount extends Fragment {
                             Toast.makeText(getActivity(),"Please fill in all the details", Toast.LENGTH_SHORT).show();
                         }
                         else {
+                            if (switch1.isChecked()) {
+                                updatedAccType= "Admin";
+                            }
+                            if (!switch1.isChecked()) {
+                                updatedAccType = "Normal";
+                            }
                         SaveProfile.setText("please wait...");
                         DatabaseReference nameRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Name");
                         nameRef.setValue(Name.getText().toString());
@@ -137,6 +143,10 @@ public class MainUserAccount extends Fragment {
                         regRef.setValue(Reg.getText().toString());
                         DatabaseReference phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Phone Number");
                         phRef.setValue(Phone.getText().toString());
+
+                            DatabaseReference accRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Account Type");
+                            accRef.setValue(updatedAccType);
+
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         user.updateEmail(Email.getText().toString().trim())
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -20,6 +20,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
