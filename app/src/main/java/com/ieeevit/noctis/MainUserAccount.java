@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -135,7 +136,23 @@ public class MainUserAccount extends Fragment {
                         regRef.setValue(Reg.getText().toString());
                         DatabaseReference phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Phone Number");
                         phRef.setValue(Phone.getText().toString());
-                        Toast.makeText(getActivity(),"Done", Toast.LENGTH_SHORT).show();}
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        user.updateEmail(Email.getText().toString().trim())
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                DatabaseReference emailRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Email");
+                                                emailRef.setValue(Email.getText().toString());
+                                                Toast.makeText(getActivity(),"Your details have been updated successfully", Toast.LENGTH_SHORT).show();;
+                                            }
+                                            else {
+                                                Toast.makeText(getActivity(),"Something went wrong, please try again later", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+                        }
                     }
                 }
         );
