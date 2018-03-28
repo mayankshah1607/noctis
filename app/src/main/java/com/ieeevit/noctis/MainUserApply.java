@@ -166,6 +166,7 @@ public class MainUserApply extends Fragment {
                         map2.put("PhoneNumber",curPh);
                         map2.put("EmailID",curEmail);
                         map2.put("RoomNumber",RoomNo);
+                        map2.put("RegistrationNumber",curReg);
                         currentLeaveDb.setValue(map2);
                         currentUserDb.setValue(newMap);
 
