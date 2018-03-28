@@ -14,7 +14,9 @@
         android:orientation="vertical"
         android:background="#11000000"
         android:padding="8dp">
-
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
         <TextView
             android:id="@+id/nametext"
             android:text="Mayank M Shah"
@@ -26,73 +28,29 @@
             android:layout_marginLeft="20dp"
             android:textStyle="bold"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_cancel_black_24dp"
+                android:layout_alignParentRight="true"
+                android:elevation="80dp"/>
+        </RelativeLayout>
+
         <TextView
-            android:text="From"
+            android:id="@+id/regtext"
+            android:text="17BCE0046"
             android:layout_height="wrap_content"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:textColor="#000000"
-            android:textSize="23sp"
-            android:layout_marginRight="100dp"
-            android:layout_marginLeft="20dp"
-            android:textStyle="bold"/>
-        <TextView
-            android:text="Till"
-            android:layout_height="wrap_content"
-            android:layout_width="100dp"
-            android:textColor="#000000"
-            android:textSize="23sp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/fromdatetext"
-                android:text="23-01-2018"
-                android:layout_height="wrap_content"
-                android:layout_width="100dp"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:layout_marginRight="100dp"
-                android:layout_marginLeft="20dp"/>
-            <TextView
-                android:id="@+id/todatetext"
-                android:text="25-01-2018"
-                android:layout_height="wrap_content"
-                android:layout_width="100dp"
-                android:textColor="#000000"
-                android:textSize="18sp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/fromtimetext"
-                android:text="21:00 HRS"
-                android:layout_height="wrap_content"
-                android:layout_width="100dp"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:layout_marginRight="100dp"
-                android:layout_marginLeft="20dp"/>
-            <TextView
-                android:id="@+id/totimetext"
-                android:text="02:00 HRS"
-                android:layout_height="wrap_content"
-                android:layout_width="100dp"
-                android:textColor="#000000"
-                android:textSize="18sp"/>
-        </LinearLayout>
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:layout_marginLeft="20dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="6dp">
             <TextView
                 android:text="Email:"
                 android:layout_height="wrap_content"
@@ -124,7 +82,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"/>
             <TextView
-                android:id="@+id/numtext"
+                android:id="@+id/phtext"
                 android:text="9789534440"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -156,5 +114,7 @@
 
 
     </LinearLayout>
+
+
 
 </android.support.v7.widget.CardView>

@@ -105,7 +105,7 @@ public class MainUserApply extends Fragment {
             }
         });
 
-        phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Phone Number");
+        phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("PhoneNumber");
         phRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -120,7 +120,7 @@ public class MainUserApply extends Fragment {
             }
         });
 
-        regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Registration Number");
+        regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("RegistrationNumber");
         regRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

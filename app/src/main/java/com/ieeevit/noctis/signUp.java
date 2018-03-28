@@ -143,9 +143,9 @@ public class signUp extends AppCompatActivity {
                                 DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
                                 Map newMap = new HashMap();
                                 newMap.put("Email",email);
-                                newMap.put("Registration Number",regno);
-                                newMap.put("Phone Number",phno);
-                                newMap.put("Account Type",type);
+                                newMap.put("RegistrationNumber",regno);
+                                newMap.put("PhoneNumber",phno);
+                                newMap.put("AccountType",type);
                                 newMap.put("Name",name);
                                 currentUserDb.setValue(newMap);
                                 Toast.makeText(getApplicationContext(),"Successfully registered!", Toast.LENGTH_SHORT).show();
