@@ -139,12 +139,12 @@ public class MainUserAccount extends Fragment {
                         SaveProfile.setText("please wait...");
                         DatabaseReference nameRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Name");
                         nameRef.setValue(Name.getText().toString());
-                        DatabaseReference regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Registration Number");
+                        DatabaseReference regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("RegistrationNumber");
                         regRef.setValue(Reg.getText().toString());
-                        DatabaseReference phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Phone Number");
+                        DatabaseReference phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("PhoneNumber");
                         phRef.setValue(Phone.getText().toString());
 
-                            DatabaseReference accRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Account Type");
+                            DatabaseReference accRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("AccountType");
                             accRef.setValue(updatedAccType);
 
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -209,7 +209,7 @@ public class MainUserAccount extends Fragment {
             }
         });
 
-        phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Phone Number");
+        phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("PhoneNumber");
         phRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -224,7 +224,7 @@ public class MainUserAccount extends Fragment {
             }
         });
 
-        regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Registration Number");
+        regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("RegistrationNumber");
         regRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -239,7 +239,7 @@ public class MainUserAccount extends Fragment {
             }
         });
 
-        accRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Account Type");
+        accRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("AccountType");
         accRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

@@ -153,6 +153,7 @@ public class MainUserApply extends Fragment {
                         String AdminEmail = adminEmail.getText().toString().trim();
                         String RoomNo = roomNo.getText().toString().trim();
                         DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("History").child(dateToday);
+                        DatabaseReference currentLeaveDb = FirebaseDatabase.getInstance().getReference().child("Leave Data").child(AdminEmail).child(dateToday).child(curName);
                         Map newMap = new HashMap();
                         Map map2 = new HashMap();
                         newMap.put("FromDate",finalFromdate);
@@ -160,14 +161,14 @@ public class MainUserApply extends Fragment {
                         newMap.put("ToDate",finalToDate);
                         newMap.put("ToTime",finalToTime);
                         newMap.put("Admin",AdminEmail);
-                        currentUserDb.setValue(newMap);
 
-                        DatabaseReference currentLeaveDb = FirebaseDatabase.getInstance().getReference().child("Leave Data").child(AdminEmail).child(dateToday).child(curName);
                         map2.put("Name",curName);
                         map2.put("PhoneNumber",curPh);
                         map2.put("EmailID",curEmail);
                         map2.put("RoomNumber",RoomNo);
                         currentLeaveDb.setValue(map2);
+                        currentUserDb.setValue(newMap);
+
                         Apply.setText("Apply");
                         Toast.makeText(getActivity(),"Successfully Applied!", Toast.LENGTH_SHORT).show();
                         fromDate.setText("Pick date");

@@ -87,7 +87,7 @@ public class signIn extends AppCompatActivity {
                 if (task.isSuccessful()){
                     //Sign In
                     String curUserID = mAuth.getCurrentUser().getUid();
-                    DatabaseReference curUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(curUserID).child("Account Type");
+                    DatabaseReference curUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(curUserID).child("AccountType");
                     curUserDb.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
