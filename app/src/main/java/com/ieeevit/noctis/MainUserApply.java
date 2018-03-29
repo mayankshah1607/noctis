@@ -153,7 +153,7 @@ public class MainUserApply extends Fragment {
                         String AdminEmail = adminEmail.getText().toString().trim();
                         String RoomNo = roomNo.getText().toString().trim();
                         DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("History").child(dateToday);
-                        DatabaseReference currentLeaveDb = FirebaseDatabase.getInstance().getReference().child("Leave Data").child(AdminEmail).child(dateToday).child(curName);
+                        DatabaseReference currentLeaveDb = FirebaseDatabase.getInstance().getReference().child("LeaveData").child(AdminEmail).child(dateToday).child(curName);
                         Map newMap = new HashMap();
                         Map map2 = new HashMap();
                         newMap.put("FromDate",finalFromdate);
@@ -283,7 +283,7 @@ public class MainUserApply extends Fragment {
                         int year = cal.get(Calendar.YEAR);
                         int day = cal.get(Calendar.DAY_OF_MONTH);
                         int month = cal.get(Calendar.MONTH);
-                        dateToday = day + "-" + month + "-" + year;
+                        dateToday = day + "-" + (month+1) + "-" + year;
                         DatePickerDialog dialog = new DatePickerDialog(
                                 getActivity(),R.style.DialogTheme,pick1,year,month,day);
                         dialog.getWindow();
