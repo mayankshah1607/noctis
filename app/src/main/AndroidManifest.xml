@@ -9,21 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".signIn">
+        <activity android:name=".Activities.signIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signUp">
+        <activity android:name=".Activities.signUp">
             <intent-filter>
                 <action android:name="com.ieeevit.noctis.signUp" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".passReset">
+        <activity android:name=".Activities.passReset">
             <intent-filter>
                 <action android:name="com.ieeevit.noctis.passReset" />
 
@@ -31,11 +31,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainUser"
+            android:name=".Activities.MainUser"
             android:label="@string/title_activity_main_user"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".MainAdmin"
+            android:name=".Activities.MainAdmin"
             android:label="@string/title_activity_main_admin"
             android:theme="@style/AppTheme"></activity>
     </application>

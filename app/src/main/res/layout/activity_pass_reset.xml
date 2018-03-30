@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ieeevit.noctis.passReset"
+    tools:context="com.ieeevit.noctis.Activities.passReset"
     android:background="@color/colorPrimary">
 
     <ScrollView

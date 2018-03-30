@@ -1,4 +1,4 @@
-package com.ieeevit.noctis;
+package com.ieeevit.noctis.Activities;
 
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -20,7 +20,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainAdmin extends AppCompatActivity {
+import com.ieeevit.noctis.MainUserAccount;
+import com.ieeevit.noctis.MainUserApply;
+import com.ieeevit.noctis.MainUserHistory;
+import com.ieeevit.noctis.R;
+import com.ieeevit.noctis.SecitionsPageAdapter;
+
+public class MainUser extends AppCompatActivity {
     private SecitionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
     Button button;
@@ -40,8 +46,11 @@ public class MainAdmin extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager){
         SecitionsPageAdapter adapter = new SecitionsPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ViewRequests(),"view requests");
+        adapter.addFragment(new MainUserApply(),"Apply");
+        adapter.addFragment(new MainUserHistory(),"History");
         adapter.addFragment(new MainUserAccount(),"Account");
         viewPager.setAdapter(adapter);
     }
+
+
 }

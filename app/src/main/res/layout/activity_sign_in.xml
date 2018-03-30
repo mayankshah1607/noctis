@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.ieeevit.noctis.signIn">
+    tools:context="com.ieeevit.noctis.Activities.signIn">
 
 
     <ScrollView
@@ -80,6 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Log in as Admin"
+                android:theme="@style/CheckTheme"
                 android:layout_gravity="center"
                 android:textColor="#ffffff"
                 android:layout_marginBottom="22dp"/>

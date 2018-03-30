@@ -1,7 +1,9 @@
-package com.ieeevit.noctis;
+package com.ieeevit.noctis.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.ieeevit.noctis.R;
 
 public class passReset extends AppCompatActivity {
 

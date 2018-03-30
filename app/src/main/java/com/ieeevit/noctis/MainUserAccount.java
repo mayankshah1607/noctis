@@ -133,22 +133,21 @@ public class MainUserAccount extends Fragment {
                             if (switch1.isChecked()) {
                                 updatedAccType= "Admin";
                             }
-                            if (!switch1.isChecked()) {
+                            else {
                                 updatedAccType = "Normal";
                             }
-                        SaveProfile.setText("please wait...");
-                        DatabaseReference nameRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Name");
-                        nameRef.setValue(Name.getText().toString());
-                        DatabaseReference regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("RegistrationNumber");
-                        regRef.setValue(Reg.getText().toString());
-                        DatabaseReference phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("PhoneNumber");
-                        phRef.setValue(Phone.getText().toString());
-
+                            SaveProfile.setText("please wait...");
+                            DatabaseReference nameRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Name");
+                            nameRef.setValue(Name.getText().toString());
+                            DatabaseReference regRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("RegistrationNumber");
+                            regRef.setValue(Reg.getText().toString());
+                            DatabaseReference phRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("PhoneNumber");
+                            phRef.setValue(Phone.getText().toString());
                             DatabaseReference accRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("AccountType");
                             accRef.setValue(updatedAccType);
 
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        user.updateEmail(Email.getText().toString().trim())
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            user.updateEmail(Email.getText().toString().trim())
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
@@ -157,6 +156,7 @@ public class MainUserAccount extends Fragment {
                                                 DatabaseReference emailRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("Email");
                                                 emailRef.setValue(Email.getText().toString());
                                                 Toast.makeText(getActivity(),"Your details have been updated successfully", Toast.LENGTH_SHORT).show();;
+
                                             }
                                             else {
                                                 Toast.makeText(getActivity(),"Something went wrong, please try again later", Toast.LENGTH_SHORT).show();
