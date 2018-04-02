@@ -1,4 +1,4 @@
-package com.ieeevit.noctis;
+package com.ieeevit.noctis.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ieeevit.noctis.R;
 
 import java.sql.Time;
 import java.text.DateFormat;

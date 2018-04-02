@@ -1,4 +1,4 @@
-package com.ieeevit.noctis;
+package com.ieeevit.noctis.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ieeevit.noctis.CardClass;
+import com.ieeevit.noctis.R;
 
 /**
  * Created by Mayank on 3/20/2018.
@@ -37,13 +39,9 @@ public class MainUserHistory extends Fragment {
         currentuser = FirebaseAuth.getInstance().getUid();
         mainDb = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuser).child("History");
         mainDb.keepSynced(true);
-
-
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
         getUserData();
         return view;
     }

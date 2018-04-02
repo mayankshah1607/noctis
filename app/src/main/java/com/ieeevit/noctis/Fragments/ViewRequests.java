@@ -1,4 +1,4 @@
-package com.ieeevit.noctis;
+package com.ieeevit.noctis.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ieeevit.noctis.R;
 
 import java.util.Calendar;
 
@@ -38,8 +39,10 @@ import java.util.Calendar;
  */
 
 public class ViewRequests extends Fragment {
-    String currentuser,AdminReg;
+    String currentuser,AdminReg,Date;
     DatabaseReference regRef;
+    Button PickDate;
+    DatePickerDialog.OnDateSetListener pick;
 
     @Nullable
     @Override
@@ -47,6 +50,32 @@ public class ViewRequests extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_view_requests,container,false);
         currentuser = FirebaseAuth.getInstance().getUid();
+        PickDate = (Button) view.findViewById(R.id.pickdate);
+        PickDate.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Calendar cal = Calendar.getInstance();
+                        int year = cal.get(Calendar.YEAR);
+                        int day = cal.get(Calendar.DAY_OF_MONTH);
+                        int month = cal.get(Calendar.MONTH);
+                        DatePickerDialog dialog = new DatePickerDialog(
+                                getActivity(),R.style.DialogTheme,pick,year,month,day);
+                        dialog.getWindow();
+                        dialog.show();
+                    }
+                }
+        );
+        pick = new DatePickerDialog.OnDateSetListener(){
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                String date = day + "-" + month + "-" + year;
+                Date=date;
+                PickDate.setText(date);
+                PickDate.setBackground(getResources().getDrawable(R.drawable.button_green));
+            }
+        };
         getAdminReg();
         return view;
 
@@ -59,8 +88,6 @@ public class ViewRequests extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 AdminReg = dataSnapshot.getValue().toString();
-
-
             }
 
             @Override
@@ -69,5 +96,4 @@ public class ViewRequests extends Fragment {
             }
         });
     }
-
 }

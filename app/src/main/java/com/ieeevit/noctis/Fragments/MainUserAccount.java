@@ -1,4 +1,4 @@
-package com.ieeevit.noctis;
+package com.ieeevit.noctis.Fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ieeevit.noctis.R;
 
 import java.sql.Ref;
 import java.util.HashMap;
